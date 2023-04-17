@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>Vue Hello World</title>
     <!-- Import Styles -->
+    <link rel="stylesheet" href="./assets/styles.css" />
     <!-- Import Vue.js -->
     <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
     
@@ -17,10 +18,18 @@
       Vue.createApp({
         data() {
           return {
-            message: 'Hello World!'
+            message: ' Hello World !',
+            isRed: true,
+            color: 'lightgreen'
           }
         },
         methods: {
+          toggleRed() {
+            this.isRed = !this.isRed;
+          },
+          toggleColor() {
+            this.color = this.color === 'lightgreen' ? 'lightblue' : 'purple'
+          },
           reverseMessage() {
             this.message = this.message.split('').reverse().join('')
           },
@@ -36,7 +45,7 @@
           Note we don't need .value inside templates because
           refs are automatically "unwrapped" in templates.
         -->
-        <h1>{{ message }}</h1>
+        <h1 :style="{ color }" @click="toggleColor" :title="message">{{ message }}</h1>
       
         <!--
           Bind to a method/function.
@@ -51,9 +60,13 @@
           Vue also provides modifiers for common tasks
           such as e.preventDefault() and e.stopPropagation()
         -->
-        <a href="https://vuejs.org" @click.prevent="notify">
+        <a href="https://vuejs.org" @click.prevent="notify" :title="message">
           A link with e.preventDefault()
         </a>
+
+        <p :class="{red:isRed}" @click="toggleRed" :title="message">
+          This should be red..... but clik me to toggle it!!
+        </p>
       </div>
   </body>
 </html>
