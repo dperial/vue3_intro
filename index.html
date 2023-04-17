@@ -2,35 +2,31 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Vue Mastery</title>
+    <title>Vue Hello World</title>
     <!-- Import Styles -->
-    <link rel="stylesheet" href="./assets/styles.css" />
     <!-- Import Vue.js -->
     <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
+    
   </head>
+
   <body>
-    <div id="app">
-      <div class="nav-bar"></div>
-      
-      <div class="cart">Cart({{ cart.length }})</div>
-      <product-display 
-        :premium="premium" 
-        @add-to-cart="updateCart" 
-        @remove-from-cart="removeById"></product-display>
-      
-    </div>
+    
+    <script type="module">
+      // import { createApp, ref } from "vue";
 
-    <!-- Import App -->
-    <script src="./main.js"></script>
+      Vue.createApp({
+        setup() {
+          const message = 'Hello World';
 
-    <!-- Import Component-->
-    <script src="./components/productsDisplay.js"> </script>
-    <script src="./components/productDetails.js"></script>
-    <script src="./components/reviewForm.js"></script>
-    <script src="./components/reviewList.js"></script>
-    <!-- Mount App -->
-    <script>
-      const mountedApp = app.mount('#app')
+          return {
+            message
+          }
+        }
+      }).mount('#app')
     </script>
+    <div id="app">
+      <h1>{{ message }}</h1>
+
+    </div>
   </body>
 </html>
