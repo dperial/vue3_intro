@@ -22,7 +22,13 @@
             isRed: true,
             color: 'lightgreen',
             show: true,
-            list: [1, 2, 3, 4, 5, 6]
+            list: [1, 2, 3, 4, 5, 6],
+            text: 'Edit me',
+            checked: true,
+            checkedNames: ['Dupont'],
+            picked: 'one',
+            selected: 'K',
+            multiSelected: ['K']
           }
         },
         methods: {
@@ -81,6 +87,62 @@
         </ul>
         <p v-else-if="list.length"> List is not empty, but hidden</p>
         <p v-else> List is empty!</p>
+
+        <!-- Form -->
+        <h2> Text Input </h2>
+        <input v-model="text"> {{ text }}
+
+        <h2> Checkbox</h2>
+        <input type="checkbox" id="checkbox" v-model="checked">
+        <label for="checkbox"> checked: {{ checked }}</label>
+
+        <!-- Multiple checkboxes can bind to the same array v-model value -->
+        <h2> Multi Checkbox </h2>
+        <input type="checkbox" id="dupont" value="Dupont" v-model="checkedNames">
+        <label for="dupont"> Dupont</label>
+        <input type="checkbox" id="richard" value="Richard" v-model="checkedNames">
+        <label for="richard"> Richard</label>
+        <input type="checkbox" id="linda" value="Linda" v-model="checkedNames">
+        <label for="linda"> Linda</label>
+        <input type="checkbox" id="blondelle" value="Blondelle" v-model="checkedNames">
+        <label for="blondelle"> Blondelle</label>
+        <input type="checkbox" id="fortune" value="Fortune" v-model="checkedNames">
+        <label for="fortune"> Fortune</label>
+        <p> checkedNames:  <pre> {{ checkedNames }}</pre></p>
+
+        <h2> Radio </h2>
+        <input type="radio" id="one" value="One" v-model="picked">
+        <label for="one"> One </label>
+        <input type="radio" id="two" value="Two" v-model="picked">
+        <label for="two"> Two </label>
+        <input type="radio" id="three" value="Three" v-model="picked">
+        <label for="three"> Three </label>
+        <br />
+        <br>
+        <span> Picked : {{ picked }}</span>
+        <hr>
+        <br>
+        <h2> Select </h2>
+        <select v-model="selected">
+          <option disabled value=""> Please select an option</option>
+          <option> K </option>
+          <option> L </option>
+          <option> M </option>
+          <option> N </option>
+          <option> O </option>
+        </select>
+        <span> Selected: {{ selected }} </span>
+        <hr>
+        <br>
+        <h2> Multi Select</h2>
+        <select v-model="multiSelected" multiple style="width: 100px">
+          <option> K </option>
+          <option> L </option>
+          <option> M </option>
+          <option> N </option>
+          <option> O </option>
+        </select>
+        <span> selected: {{ multiSelected }} </span>
       </div>
   </body>
 </html>
