@@ -1,8 +1,22 @@
 const app = Vue.createApp({
     data() {
             return {
-                product : 'Stocks',
-                desc: 'This is the most amzing socks for developer'
+                cart: [],
+                premium: false
+            }
+            
+        },
+        methods: {
+            updateCart(id) {
+                console.log(id)
+                this.cart.push(id)
+            },
+            removeById(id) {
+                const index = this.cart.indexOf(id)
+                if (index > -1) {
+                    this.cart.splice(index, 1)
+                }
             }
         },
+        
 })
