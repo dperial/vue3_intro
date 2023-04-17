@@ -7,15 +7,18 @@
     <link rel="stylesheet" href="./assets/styles.css" />
     <!-- Import Vue.js -->
     <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
-    
   </head>
 <!-- I switche to the option API, because the Composition API see to not working in my broswer-->
   <body>
     
     <script type="module">
       // import { createApp } from 'vue'
-      
+      import TodoItem from './components/TodoItem.js'
+
       Vue.createApp({
+        components: {
+          TodoItem
+        },
         data() {
           return {
             message: ' Hello World !',
@@ -28,7 +31,13 @@
             checkedNames: ['Dupont'],
             picked: 'one',
             selected: 'K',
-            multiSelected: ['K']
+            multiSelected: ['K'],
+            groceryList: [
+              {id: 0, text: 'Vegetables'},
+              {id: 1, text: 'Cheese'},
+              {id: 2, text: 'Whatever else humans are supposed to eat!!'},
+              {id: 3, text: 'Meat'}
+            ]
           }
         },
         methods: {
@@ -143,6 +152,17 @@
           <option> O </option>
         </select>
         <span> selected: {{ multiSelected }} </span>
+
+        <!-- Here  we show the simplest possible component which accepts a prop an renders it-->
+        
+        <ol>
+          <todo-item
+            v-for="item in groceryList"
+            :todo="item"
+            :key="item.id"
+          >
+          </todo-item>
+        </ol>
       </div>
   </body>
 </html>
